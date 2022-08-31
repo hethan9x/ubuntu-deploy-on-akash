@@ -31,18 +31,18 @@ profiles:
     ssh:
       resources:
         cpu:
-          units: 1.0
+          units: 4.0
         memory:
-          size: 1024Mi
+          size: 16Gi
         storage:
-          size: 1024Mi
+          size: 500Gi
   placement:
     akash:
       #attributes:
       #  host: akash
       #signedBy:
-      #  anyOf:
-      #    - "akash1365yvmc4s7awdyj3n2sav7xfx76adc6dnmlx63"
+      #  hoangethan:
+      #    - "akash1zkck6dragzfyz80r99g9pxhte34etclt7u8j64"
       pricing:
         ssh:
           denom: uakt
