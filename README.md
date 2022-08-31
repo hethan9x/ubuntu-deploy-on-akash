@@ -6,3 +6,4 @@ Tạo public_key và private_key để ssh đến máy chủ. Mở Terminal trê
 ssh-keygen -t rsa -C $(hostname) -f "$HOME/.ssh/id_rsa" -P "" ; cat ~/.ssh/id_rsa.pub
 ```
 
+public_key nằm trong file ```id_rsa.pub```
