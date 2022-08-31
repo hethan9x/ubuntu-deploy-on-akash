@@ -1,3 +1,5 @@
+## Ubuntu Deploy On Akash
+
 Tạo public_key và private_key để ssh đến máy chủ. Mở Terminal trên máy tính của bạn và thực hiện lệnh sau
 
 ```
