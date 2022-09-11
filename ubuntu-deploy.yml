@@ -3,7 +3,7 @@ version: "2.0"
 
 services:
   app:
-    image: ubuntu:latest
+    image: ubuntu:20.04
     
     env:
       - "my_root_password=rncJbegsYD4jdCJE" # root password for ssh connection. пароль root для подключения по ssh
@@ -40,9 +40,9 @@ profiles:
     app:
       resources:
         cpu:
-          units: 4.0
+          units: 6.0
         memory:
-          size: 16Gi
+          size: 32Gi
         storage:
           size: 150Gi
          
