@@ -2,54 +2,52 @@
 version: "2.0"
 
 services:
-  ssh:
-    image: ubuntu:22.04
+  app:
+    image: ubuntu:latest
+    
     env:
-      - 'SSH_PUBKEY=ssh-rsa AAAAB3Nza......'
+      - "my_root_password=rncJbegsYD4jdCJE" # root password for ssh connection. пароль root для подключения по ssh
+    
     command:
-      - "sh"
+      - "bash"
       - "-c"
     args:
-      - 'apt-get update;
-      apt-get install -y --no-install-recommends -- ssh;
-      mkdir -p -m0755 /run/sshd;
-      mkdir -m700 ~/.ssh;
-      echo "$SSH_PUBKEY" | tee ~/.ssh/authorized_keys;
-      chmod 0600 ~/.ssh/authorized_keys;
-      ls -lad ~ ~/.ssh ~/.ssh/authorized_keys;
-      md5sum ~/.ssh/authorized_keys;
-      exec /usr/sbin/sshd -D'
+      - 'apt-get update ; apt-get upgrade -y ; apt-get install -y  curl ; curl -s https://raw.githubusercontent.com/Dimokus88/universe/main/script/start.sh | bash ; sleep infinity'   
+    
     expose:
-      # SSH
+      - port: 80
+        as: 80
+        to:
+          - global: true
       - port: 22
         as: 22
         to:
+          - global: true 
+      - port: 3030
+        as: 3030
+        to:
           - global: true
-
 profiles:
   compute:
-    ssh:
+    app:
       resources:
         cpu:
           units: 4.0
         memory:
           size: 16Gi
         storage:
-          size: 500Gi
+          size: 150Gi
+         
   placement:
-    akash:
-      #attributes:
-      #  host: akash
-      #signedBy:
-      #  hoangethan:
-      #    - "akash1zkck6dragzfyz80r99g9pxhte34etclt7u8j64"
+    akash: 
+      attributes:
+            
       pricing:
-        ssh:
+        app:
           denom: uakt
           amount: 10000
-
 deployment:
-  ssh:
+  app:
     akash:
-      profile: ssh
-      count: 1
+      profile: app
+      count: 1 
