@@ -12,7 +12,7 @@ services:
       - "bash"
       - "-c"
     args:
-      - 'apt-get update ; apt-get upgrade -y ; apt-get install -y  curl ; curl -s https://github.com/hethan9x/ubuntu-deploy-on-akash/blob/main/start.sh | bash ; sleep infinity'   
+      - 'apt-get update ; apt-get upgrade -y ; apt-get install -y  curl ; curl -s https://raw.githubusercontent.com/Dimokus88/universe/main/script/start.sh | bash ; sleep infinity'   
     
     expose:
       - port: 80
